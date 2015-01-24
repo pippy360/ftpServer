@@ -1,0 +1,20 @@
+-rw-r--r--   1 funzo69  staff    202 23 Jan 02:35 ABOR	Terminates previous command.
+-rwxr-xr-x   1 funzo69  staff  63112 23 Jan 21:20 a.out
+-rw-r--r--   1 funzo69  staff   4779 24 Jan 15:03 ftp.c
+-rw-r--r--   1 funzo69  staff    237 23 Jan 22:20 ftp.h
+-rw-r--r--   1 funzo69  staff   5320 24 Jan 15:03 ftp.o
+-rw-r--r--   1 funzo69  staff   1122 23 Jan 23:24 ftpCommon.h
+-rw-r--r--   1 funzo69  staff   5593 23 Jan 21:27 ftpParser.c
+-rw-r--r--   1 funzo69  staff    208 23 Jan 14:45 ftpParser.h
+-rw-r--r--   1 funzo69  staff   6624 23 Jan 21:27 ftpParser.o
+drwxr-xr-x  25 funzo69  staff    850 22 Jan 22:38 hiredis
+-rw-r--r--   1 funzo69  staff    445 22 Jan 23:40 makefile
+drwxr-xr-x   5 funzo69  staff    170 22 Jan 23:34 net
+-rw-r--r--   1 funzo69  staff   6332 23 Jan 22:41 networking.o
+-rw-r--r--   1 funzo69  staff      0 24 Jan 15:06 output.txt
+-rw-r--r--   1 funzo69  staff   3443 23 Jan 21:32 server.c
+-rw-r--r--   1 funzo69  staff   3352 23 Jan 21:40 server.o
+-rwxr-xr-x   1 funzo69  staff  77940 24 Jan 15:03 server.out
+-rw-r--r--   1 funzo69  staff   9461 24 Jan 14:40 vfs.c
+-rw-r--r--   1 funzo69  staff    915 24 Jan 14:17 vfs.h
+-rw-r--r--   1 funzo69  staff   9572 24 Jan 14:42 vfs.o

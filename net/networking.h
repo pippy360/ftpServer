@@ -23,6 +23,8 @@ typedef struct {
     SSL_CTX *sslContext;
 } sslConnection;
 
+int getPort(int fd);
+
 void sigchld_handler(int s);
 
 void *get_in_addr(struct sockaddr *sa);

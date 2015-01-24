@@ -1,6 +1,7 @@
-redisReply *vfs_getFileName(redisContext *context, long id);
 
-redisReply *vfs_getFolderName(redisContext *context, long id);
+void vfs_getFileName(  redisContext *context, long id, char *outputNameBuffer, int outputNameBufferLength);
+
+void vfs_getFolderName(redisContext *context, long id, char *outputNameBuffer, int outputNameBufferLength);
 
 long vfs_createFile(redisContext *context, long parentId, char *name, long size);
 
@@ -16,7 +17,8 @@ void vfs_getFolderPathFromId(redisContext *context, long inputId, char *outputBu
 
 long vfs_getIdFromPath(redisContext *context, char *path);
 
+long vfs_getFileSizeFromId(redisContext *context, long id);
+
 long vfs_getIdByName(redisContext *context, long parentFolderId, char *inputName);
 
-void vfs_pwd(redisContext *context, long dirId){
 

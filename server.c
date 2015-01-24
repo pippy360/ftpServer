@@ -17,6 +17,8 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include "net/networking.h"
+#include "hiredis/hiredis.h"
+#include "vfs.h"
 #include "ftpCommon.h"
 #include "ftp.h"
 #include "ftpParser.h"
@@ -27,6 +29,26 @@
 #define VALID_GREETING "220 fuck yeah you've connected ! what are you looking for...?\r\n"
 
 void handle_client( int client_fd ){
+
+
+    unsigned int j;
+    redisContext *c;
+    redisReply *reply;
+    const char *hostname = "127.0.0.1";
+    int port = 6379;
+
+    struct timeval timeout = { 1, 500000 }; // 1.5 seconds
+    c = redisConnectWithTimeout(hostname, port, timeout);
+    if (c == NULL || c->err) {
+        if (c) {
+            printf("REDIS Connection error: %s\n", c->errstr);
+            redisFree(c);
+        } else {
+            printf("REDIS Connection error: can't allocate redis context\n");
+        }
+        exit(1);
+    }
+
 
     char buffer[MAX_PACKET_SIZE], pBuffer[MAX_PACKET_SIZE], usernameBuffer[100];
     int sent, recieved;
@@ -49,7 +71,7 @@ void handle_client( int client_fd ){
             //handle a bad packet
         }
         //handle a good packet
-        ftp_handleFtpRequest(&parserState, &clientState);
+        ftp_handleFtpRequest(c, &parserState, &clientState);
     }
 
     close(client_fd);
@@ -86,7 +108,7 @@ int main(int argc, char *argv[])
             handle_client( client_fd );
             
             close(client_fd);
-           //recv from client, now get a file from google
+            //recv from client, now get a file from google
 
             exit(0);
         }

@@ -50,6 +50,13 @@ typedef enum {
 	REQUEST_ERROR
 } ftpRequest_t;
 
+typedef enum {
+	FTP_TRANSFER_TYPE_A,
+	FTP_TRANSFER_TYPE_E,
+	FTP_TRANSFER_TYPE_I,
+	FTP_TRANSFER_TYPE_L
+} ftpTransferType_t;
+
 typedef struct {
 	ftpRequest_t type;
 	char *paramBuffer;
@@ -59,10 +66,13 @@ typedef struct {
 typedef struct {
 	int command_fd;
 	int data_fd;
+	int data_fd2;
 	int isDataConnectionOpen;
 	char *usernameBuffer;
 	int usernameBufferLength;
 	int loggedIn;
+	int cwdId;
+	ftpTransferType_t transferType;
 } ftpClientState_t;
 
 
