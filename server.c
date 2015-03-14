@@ -63,14 +63,12 @@ void handle_client( int client_fd ){
         recieved = recv(client_fd, buffer, MAX_PACKET_SIZE, 0);
         printf("buffer: %.*s--\n", recieved, buffer);
         ftp_parsePacket(buffer, recieved, &parserState, &clientState);
-        //ftp_handleResponse();
+        printf("the state is: %d\n", (int)parserState.type);
         if(parserState.type == REQUEST_QUIT){
             printf("got a quit\n");
             break;
-        }else{
-            //handle a bad packet
         }
-        //handle a good packet
+
         ftp_handleFtpRequest(c, &parserState, &clientState);
     }
 

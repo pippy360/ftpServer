@@ -72,6 +72,7 @@ int ftp_parsePacket(char *packet, int packetLength, ftpParserState_t *parserStat
 
 	//0 if success, non-0 otherwise
 	if(getFtpCommand(packet, packetLength, buffer, MAX_PACKET_LENGTH, &endChar, &endPos) != 0){
+		printf("we got here !!\n");
 		parserState->type = REQUEST_ERROR;
 		return -1;
 	}
@@ -88,7 +89,8 @@ int ftp_parsePacket(char *packet, int packetLength, ftpParserState_t *parserStat
 
 	//uppercase the  
 	char *p = buffer;
-	while((*p++ = toupper(*p)));
+	while((*p = toupper(*p)))
+		p++;
 
 	if( 	  strcmp(buffer, "ABOR") == 0 ){
 		parserState->type = REQUEST_ABOR;
